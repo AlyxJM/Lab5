@@ -9,12 +9,17 @@
  */
 public class Bank {
 
-    public String bankName;
+    /**
+     * Name of the bank.
+     */
+    private String bankName;
 
+    /**
+     * Constructor that takes no arguments, sets Bank Name to "Illini Bank".
+     */
     public Bank() {
         bankName = "Illini Bank";
     }
-
     /**
      * Withdraw money from an account.
      * <p>
@@ -29,6 +34,13 @@ public class Bank {
         /*
          * Implement this function
          */
+        if (bankAccount.getAccountBalance() - amount > 0) {
+            bankAccount.setAccountBalance(bankAccount.getAccountBalance() - amount);
+            System.out.println(bankAccount.getAccountBalance());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -45,6 +57,13 @@ public class Bank {
         /*
          * Implement this function
          */
+        if (amount > 0) {
+            bankAccount.setAccountBalance(bankAccount.getAccountBalance() + amount);
+            System.out.println(bankAccount.getAccountBalance());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -64,6 +83,15 @@ public class Bank {
         /*
          * Implement this function
          */
+        if (source.getAccountBalance() > amount) {
+            source.setAccountBalance(source.getAccountBalance() - amount);
+            destination.setAccountBalance(destination.getAccountBalance() + amount);
+            System.out.println(source.getAccountBalance());
+            System.out.println(destination.getAccountBalance());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -77,18 +105,34 @@ public class Bank {
         /*
          * Implement this function
          */
+        bankAccount.setOwnerName(name);
     }
 
-    public static int totalAccounts = 0;
+    /**
+     * Number of accounts created.
+     */
+    private static int totalAccounts = 0;
+
+    /**
+     * Increments total Accounts
+     * @return current number of total Accounts
+     */
+    public static int incrementTotalAccounts() {
+        /*
+         * Implement this function
+         */
+        return totalAccounts++;
+    }
     /**
      * Uses static variable to get number of bank accounts opened.
      *
      * @return the total number of accounts
      */
-    public static int getNumberOfAccount() {
+    public static int getTotalAccounts() {
         /*
          * Implement this function
          */
+        return Bank.getTotalAccounts();
     }
 
     /**
